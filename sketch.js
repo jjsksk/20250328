@@ -4,14 +4,11 @@ let iframe;
 
 function setup() {
   createCanvas(windowWidth, windowHeight); // 全螢幕畫布
-  canvas.style('z-index', '1'); // 設定畫布的 z-index 為 1，確保在 iframe 上層
-canvas.position(0, 0); // 確保畫布填滿視窗
 
   // 創建 iframe
   iframe = createElement('iframe');
   iframe.attribute('src', 'https://www.bilibili.com/video/BV1gT4y1e7Nd/'); // 修改為 Bilibili 網址
   iframe.style('border', 'none');
-  iframe.style('z-index', '-1'); // 設定 iframe 的 z-index 為 -1，確保在畫布下層
   iframe.size(windowWidth * 0.8, windowHeight * 0.8); // 設定寬高為視窗的 80%
   iframe.position(windowWidth * 0.1, windowHeight * 0.1); // 置中顯示
 
@@ -38,7 +35,7 @@ function draw() {
 class Seaweed {
   constructor(x, y, height) {
     this.x = x;
-    this.y = y - 50; // 將海草的 y 座標往上移動 50 像素
+    this.y = y;
     this.height = height;
     this.width = 5; // 固定寬度為 5
     this.angle = random(TWO_PI); // 初始角度
@@ -69,7 +66,6 @@ class Seaweed {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight); // 畫布隨視窗大小調整
-canvas.position(0, 0); // 確保畫布填滿視窗
 
   // 調整 iframe 的大小和位置
   iframe.size(windowWidth * 0.8, windowHeight * 0.8);
